@@ -23,7 +23,7 @@ from post.views import post_index, post_detail, post_create, post_update, post_d
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view),
+    path('', home_view, name= 'home'),
     path('post/', include('post.urls'))
 
 ]

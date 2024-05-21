@@ -4,17 +4,16 @@
 
 {% block body%}
 
-{#{% url 'detail' post.id %} #}
+    {#{% url 'detail' post.id %} #}
 
+    {% for post in posts%}
 
-{% for post in posts%}
+        {{ post.id }} <br>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a><br>
+        {{ post.content}} <br>
+        {{ post.publisihing_date }} <br>
 
-    {{ post.id }} <br>
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a><br>
-    {{ post.content}} <br>
-    {{ post.publisihing_date }} <br>
-
-{% endfor%}
+    {% endfor%}
 
 
 {% endblock %}
