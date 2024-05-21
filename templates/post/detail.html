@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Post Detail{% endblock %}
+
+{% block body%}
+
+
+    {% include 'messages.html'%}
+
+   {{ post.id }} <br>
+    {{ post.title }} <br>
+    {{ post.content}} <br>
+    {{ post.publisihing_date }} <br>
+
+{% endblock %}
