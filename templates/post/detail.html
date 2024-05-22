@@ -4,8 +4,20 @@
 
 {% block body%}
     {% include 'messages.html'%}
-   {{ post.id }} <br>
-    {{ post.title }} <br>
-    {{ post.content}} <br>
-    {{ post.publisihing_date }} <br>
+                        <div class="container">
+                           <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <div class="card" style="width: 18rem;">
+                                      <div class="card-body">
+                                          <p><small> {{ post.publisihing_date|timesince }} önce</small></p>
+                                        <h5 class="card-title">{{ post.title }} </h5>
+                                        <p class="card-text"> {{ post.content|linebreaks}}</p>
+                                        <a href="{{ post.get_absolute_url }}" class="btn btn-primary">İncele</a>
+                                        <a href="{{ post.get_update_url }}" class="btn btn-warning">Güncelle</a>
+                                        <a href="{{ post.get_delete_url }}" class="btn btn-danger">Sil</a>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 {% endblock %}
