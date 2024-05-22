@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import  reverse
+from django.utils.text import slugify
+
 # Create your models here.
 
 
@@ -26,6 +28,11 @@ class Post(models.Model):
 
     def get_delete_url(self):
         return reverse('post:delete', kwargs={'id': self.id})
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title.replace('ı','i'))
+        return super(Post, self).save(*args, **kwargs)
 
 
     class Meta:

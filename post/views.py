@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, HttpResponseRedirect, redirect, Http404
 from .models import Post
 from .forms import PostForm
-from django.contrib import  messages
+from django.contrib import messages
+from django.utils.text import slugify
 
 # Create your views here.
 
@@ -37,12 +38,14 @@ def post_detail(request, id):
 
 def post_create(request):
 
-    if not request.user.is_authenticated():
-        return Http404()
+    if not request.user.is_authenticated:
+        raise Http404()
+
 
     form = PostForm (request.POST or None, request.FILES or None)
     if form.is_valid():
         post = form.save()
+
         messages.success(request, 'Başarılı bir şekilde oluşturuldu!', extra_tags= "mesaj-basarili")
         return HttpResponseRedirect (post.get_absolute_url())
     context = {
@@ -53,8 +56,9 @@ def post_create(request):
 
 def post_update(request, id):
 
-    if not request.user.is_authenticated():
-        return Http404()
+    if not request.user.is_authenticated:
+        raise Http404()
+
     post = get_object_or_404(Post, id=id)
     form = PostForm (request.POST or None, request.FILES or None, instance=post)
     if form.is_valid():
@@ -70,8 +74,8 @@ def post_update(request, id):
 
 
 def post_delete(request,id):
-    if not request.user.is_authenticated():
-        return Http404()
+    if not request.user.is_authenticated:
+        raise Http404()
 
     post = get_object_or_404(Post, id=id)
     post.delete()

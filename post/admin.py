@@ -4,7 +4,7 @@ from .models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['title','publisihing_date']
+    list_display = ['title','publisihing_date', 'slug']
     list_display_links = ['publisihing_date']
     list_filter = ['publisihing_date']
     search_fields = ['title','content']
