@@ -16,6 +16,8 @@
                                    <img src="{{ post.image.url }} " class = "img-fluid"/>
                                      {% endif %}
                                 <h5 class="card-title">{{ post.title }} </h5>
+                                 <p>Yazar: <b>{{ post.user.get_full_name}}</b> </p>
+
                                 <p class="card-text"> {{ post.content|safe|linebreaks|truncatechars:150}}</p>
                                 <a href="{{ post.get_absolute_url }}" class="btn btn-primary">İncele</a>
                                           {% if request.user.is_authenticated %}

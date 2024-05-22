@@ -7,6 +7,7 @@ from ckeditor.fields import RichTextField
 
 
 class Post(models.Model):
+    user = models.ForeignKey('auth.User', default=1, verbose_name='Yazar', related_name= "posts", on_delete=models.SET_DEFAULT)
     title = models.CharField(max_length=120,verbose_name="Başlık")
     content  = RichTextField(verbose_name="İçerik")
     publisihing_date = models.DateTimeField(verbose_name="Yayınlanma Tarihi", auto_now_add=True)
