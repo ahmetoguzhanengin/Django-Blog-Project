@@ -10,6 +10,7 @@
                                     <div class="card" style="width: 18rem;">
                                       <div class="card-body">
                                           <p><small> {{ post.publisihing_date|timesince }} önce</small></p>
+                                          <img src="{{ post.image.url }} " class = "img-fluid"/>
                                         <h5 class="card-title">{{ post.title }} </h5>
                                         <p class="card-text"> {{ post.content|linebreaks}}</p>
                                         <a href="{{ post.get_absolute_url }}" class="btn btn-primary">İncele</a>
