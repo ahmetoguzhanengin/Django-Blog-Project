@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404, HttpResponseRedirect, redirect
+from django.shortcuts import render, HttpResponse, get_object_or_404, HttpResponseRedirect, redirect, Http404
 from .models import Post
 from .forms import PostForm
 from django.contrib import  messages
@@ -37,6 +37,9 @@ def post_detail(request, id):
 
 def post_create(request):
 
+    if not request.user.is_authenticated():
+        return Http404()
+
     form = PostForm (request.POST or None, request.FILES or None)
     if form.is_valid():
         post = form.save()
@@ -49,6 +52,9 @@ def post_create(request):
 
 
 def post_update(request, id):
+
+    if not request.user.is_authenticated():
+        return Http404()
     post = get_object_or_404(Post, id=id)
     form = PostForm (request.POST or None, request.FILES or None, instance=post)
     if form.is_valid():
@@ -64,6 +70,9 @@ def post_update(request, id):
 
 
 def post_delete(request,id):
+    if not request.user.is_authenticated():
+        return Http404()
+
     post = get_object_or_404(Post, id=id)
     post.delete()
 
