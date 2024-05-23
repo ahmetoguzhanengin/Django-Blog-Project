@@ -44,7 +44,7 @@
                                     Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
                                 </span>
 
-                                {% if contacts.has_next %}
+                                {% if posts.has_next %}
                                     <a href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
                                 {% endif %}
                             </span>
