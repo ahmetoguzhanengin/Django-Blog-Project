@@ -3,5 +3,5 @@
 
 {% block title %} Anasayfa - {{ block.super }}{% endblock %}
 {% block body%}
-Merhaba, burası ana sayfa {{ isim }}
+Hoşgeldiniz {{ request.user.get_full_name}} !
 {% endblock %}
