@@ -20,7 +20,7 @@ def post_index(request):
         ).distinct()
 
 
-    paginator = Paginator(post_list, 15)  # Show 25 contacts per page
+    paginator = Paginator(post_list, 3)  # Show 25 contacts per page
     page = request.GET.get('page')
 
     try:
