@@ -1,8 +1,11 @@
 from django import  forms
 from .models import Post
 from .models import Comment
+from django_recaptcha.fields import ReCaptchaField
+
 
 class PostForm(forms.ModelForm):
+    captcha = ReCaptchaField()
     class Meta:
         model = Post
         fields =[
@@ -12,6 +15,7 @@ class PostForm(forms.ModelForm):
         ]
 
 class CommentForm(forms.ModelForm):
+    captcha = ReCaptchaField()
     class Meta:
         model = Comment
         fields = [

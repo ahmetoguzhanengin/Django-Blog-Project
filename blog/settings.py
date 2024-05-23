@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'django_cleanup',
     'ckeditor',
+    'django_recaptcha',
 
 ]
 
@@ -145,3 +146,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+RECAPTCHA_PUBLIC_KEY = '6LdgR-YpAAAAANdq1JQQoJIiidh2N5GK21rTsZYk'
+RECAPTCHA_PRIVATE_KEY = '6LdgR-YpAAAAAJqq0YsJB6rZgLyK6-QZ5ysfyefu'
+
+NOCAPTCHA  =True
+
